@@ -1,0 +1,1 @@
+print("kok_test")

@@ -1,0 +1,39 @@
+predict:
+  SEED: 10
+  comments:
+    count_video: 20
+    limit: 30
+    maxResults: 20
+    nextPageToken: ''
+    query: война
+  dir_folder: .
+  model_lr: LogisticRegression
+  model_vec: vector_tfidf
+  name_file: data/text.csv
+  num_top: 10
+  stopwords: russian
+  version_lr: 2
+  version_vec: 2
+train:
+  SEED: 10
+  clustering:
+    affinity: cosine
+    count_max_clusters: 15
+    silhouette_metric: euclidean
+  comments:
+    count_video: 20
+    limit: 5
+    maxResults: 20
+    nextPageToken: ''
+    query: наука
+  cross_val:
+    test_size: 0.3
+  dir_folder: .
+  model:
+    class_weight: balanced
+  model_lr: LogisticRegression
+  model_vec: vector_tfidf
+  name_experiment: hv-1
+  stopwords: russian
+  tf_model:
+    max_features: 500
