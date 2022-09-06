@@ -1,6 +1,9 @@
+import datetime
+
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.utils.dates import days_ago
+import os
 
 default_args = {
     "owner": "kok4444",
@@ -11,13 +14,15 @@ default_args = {
 }
 
 piplines = {'commit_amend_data_to_github': {"schedule": "*/2 * * * *"},  # At 20:39 on Saturday MSK
-            "mr_get_reddit_subs1": {"schedule": "*/4 * * * *"}}  # At 23:48 every day - 3 hours diff
+            "mr_get_reddit_subs1": {"schedule": "1 * * * *"}}  # At 23:48 every day - 3 hours diff
 
 def init_dag(dag, task_id):
     with dag:
+        dt = str(datetime.datetime)
+        filename = os.path.join(f'./streamlit/{dt}.py')
         t1 = BashOperator(
             task_id=f"{task_id}",
-            bash_command=f'echo $(pwd) kok_test_simple')
+            bash_command=f'echo st.title(\'My first app  111\') > {filename}.py; git push --amend -a origin petproject')
             #bash_command=f'python3 "$(pwd)"/src/{task_id}.py')
     return dag
 

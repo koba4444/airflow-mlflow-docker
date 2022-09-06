@@ -37,3 +37,5 @@ train:
   stopwords: russian
   tf_model:
     max_features: 500
+commit_amend_data_to_github:
+
